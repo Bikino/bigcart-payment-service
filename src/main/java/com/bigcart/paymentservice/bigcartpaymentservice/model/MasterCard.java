@@ -9,21 +9,25 @@ import java.time.LocalDate;
 public class MasterCard{
     @Id
     @GeneratedValue
-    int id;
-    String cardNumber;
-    String cvs;
-    LocalDate expirationDate;
-    String nameOnCard;
+    private long id;
+    private String cardNumber;
+    private String cvs;
+    private LocalDate expirationDate;
+    private String nameOnCard;
+    private long userId;
 
-    public MasterCard(String cardNumber, String cvs, LocalDate expirationDate, String nameOnCard) {
+    public long getId() {
+        return id;
+    }
+
+    public MasterCard() {
+    }
+    public MasterCard(String cardNumber, String cvs, LocalDate expirationDate, String nameOnCard, long userId) {
         this.cardNumber = cardNumber;
         this.cvs = cvs;
         this.expirationDate = expirationDate;
         this.nameOnCard = nameOnCard;
-    }
-
-    public MasterCard() {
-
+        this.userId=userId;
     }
 
     public String getCardNumber() {
@@ -58,4 +62,11 @@ public class MasterCard{
         this.nameOnCard = nameOnCard;
     }
 
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
 }

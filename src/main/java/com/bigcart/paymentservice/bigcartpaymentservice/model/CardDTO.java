@@ -1,14 +1,8 @@
 package com.bigcart.paymentservice.bigcartpaymentservice.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.time.LocalDate;
 
-@Entity
-public class VisaCard {
-    @Id
-    @GeneratedValue
+public class CardDTO {
     long id;
     private String cardNumber;
     private String cvs;
@@ -16,10 +10,9 @@ public class VisaCard {
     private String nameOnCard;
     private long userId;
 
-
-    public VisaCard() {
+    public CardDTO() {
     }
-    public VisaCard(String cardNumber, String cvs, LocalDate expirationDate, String nameOnCard, long userId) {
+    public CardDTO(String cardNumber, String cvs, LocalDate expirationDate, String nameOnCard, long userId) {
         this.cardNumber = cardNumber;
         this.cvs = cvs;
         this.expirationDate = expirationDate;
@@ -27,11 +20,15 @@ public class VisaCard {
         this.userId=userId;
     }
 
+    public String getCardNumber() {
+        return cardNumber;
+    }
     public long getId() {
         return id;
     }
-    public String getCardNumber() {
-        return cardNumber;
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setCardNumber(String cardNumber) {
