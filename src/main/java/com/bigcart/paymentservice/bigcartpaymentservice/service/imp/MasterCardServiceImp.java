@@ -20,4 +20,9 @@ public class MasterCardServiceImp implements MasterCardService {
         cardDTO.setId(masterCard.getId());
         return cardDTO;
     }
+
+    @Override
+    public void removeCard(CardDTO cardDTO) {
+        masterCardRepository.deleteById(cardDTO.getId());
+    }
 }

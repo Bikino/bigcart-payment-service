@@ -19,4 +19,9 @@ public class VisaCardServiceImp implements VisaCardService {
          cardDTO.setId(visaCard.getId());
          return cardDTO;
     }
+
+    @Override
+    public void removeCard(CardDTO cardDTO) {
+        visaCardRepository.deleteById(cardDTO.getId());
+    }
 }

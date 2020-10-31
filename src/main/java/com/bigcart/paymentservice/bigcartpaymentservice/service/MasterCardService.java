@@ -5,4 +5,5 @@ import org.springframework.stereotype.Service;
 
 public interface MasterCardService {
     CardDTO addCard(CardDTO cardDTO);
+    void removeCard(CardDTO cardDTO);
 }
