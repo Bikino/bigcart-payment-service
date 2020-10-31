@@ -15,7 +15,7 @@ public class VisaCard {
     private LocalDate expirationDate;
     private String nameOnCard;
     private long userId;
-
+    private double balance;
 
     public VisaCard() {
     }
@@ -25,11 +25,21 @@ public class VisaCard {
         this.expirationDate = expirationDate;
         this.nameOnCard = nameOnCard;
         this.userId=userId;
+        this.balance = 100000;
     }
 
     public long getId() {
         return id;
     }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
     public String getCardNumber() {
         return cardNumber;
     }

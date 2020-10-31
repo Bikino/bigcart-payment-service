@@ -15,6 +15,15 @@ public class MasterCard{
     private LocalDate expirationDate;
     private String nameOnCard;
     private long userId;
+    private double balance;
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
 
     public long getId() {
         return id;
@@ -28,6 +37,7 @@ public class MasterCard{
         this.expirationDate = expirationDate;
         this.nameOnCard = nameOnCard;
         this.userId=userId;
+        this.balance = 100000;
     }
 
     public String getCardNumber() {

@@ -1,9 +1,9 @@
 package com.bigcart.paymentservice.bigcartpaymentservice.controller;
 
 import com.bigcart.paymentservice.bigcartpaymentservice.model.CardDTO;
-import com.bigcart.paymentservice.bigcartpaymentservice.service.MasterCardService;
-import com.bigcart.paymentservice.bigcartpaymentservice.service.VisaCardService;
+import com.bigcart.paymentservice.bigcartpaymentservice.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/card")
 public class CardController {
+    @Qualifier("masterCardServiceImp")
     @Autowired
-    private MasterCardService masterCardService;
+    private CardService masterCardService;
+    @Qualifier("visaCardServiceImp")
     @Autowired
-    private VisaCardService visaCardService;
+    private CardService visaCardService;
     @PostMapping
     public ResponseEntity<CardDTO> addCard(@RequestBody CardDTO card) {
         CardDTO cardDTO = null;
@@ -34,5 +36,15 @@ public class CardController {
             visaCardService.removeCard(card);
         }
         return new ResponseEntity(HttpStatus.OK);
+    }
+    @PostMapping("/{amount}")
+    public ResponseEntity<Boolean> pay(@RequestBody CardDTO card, @PathVariable double amount) {
+        boolean x = false;
+        if(!card.getCardNumber().startsWith("4")) {
+           x = masterCardService.pay(card, amount);
+        } else {
+            x = visaCardService.pay(card, amount);
+        }
+        return x  ? new ResponseEntity<Boolean>(x, HttpStatus.ACCEPTED) : new ResponseEntity<Boolean>(x, HttpStatus.BAD_REQUEST);
     }
 }
