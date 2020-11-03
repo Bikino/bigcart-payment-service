@@ -1,5 +1,8 @@
 package com.bigcart.paymentservice.bigcartpaymentservice.model;
 
+import com.bigcart.paymentservice.bigcartpaymentservice.config.CreditCardNumberConverter;
+
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,6 +13,7 @@ public class VisaCard {
     @Id
     @GeneratedValue
     long id;
+    @Convert(converter = CreditCardNumberConverter.class)
     private String cardNumber;
     private String cvs;
     private LocalDate expirationDate;
