@@ -37,4 +37,9 @@ public class MasterCardServiceImp implements CardService {
         masterCardRepository.save(m);
         return true;
     }
+
+    @Override
+    public boolean oneTimePayment(CardDTO cardDTO) {
+        return pay(cardDTO, 25000);
+    }
 }

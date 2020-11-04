@@ -7,4 +7,5 @@ public interface CardService {
     CardDTO addCard(CardDTO cardDTO);
     void removeCard(CardDTO cardDTO);
     boolean pay(CardDTO cardDTO, double amount);
+    boolean oneTimePayment(CardDTO cardDTO);
 }

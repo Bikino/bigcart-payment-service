@@ -38,4 +38,9 @@ public class VisaCardServiceImp implements CardService {
         visaCardRepository.save(v);
         return true;
     }
+
+    @Override
+    public boolean oneTimePayment(CardDTO cardDTO) {
+        return pay(cardDTO, 25000);
+    }
 }

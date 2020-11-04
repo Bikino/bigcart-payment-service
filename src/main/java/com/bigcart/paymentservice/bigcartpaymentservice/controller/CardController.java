@@ -47,4 +47,14 @@ public class CardController {
         }
         return x  ? new ResponseEntity<Boolean>(x, HttpStatus.ACCEPTED) : new ResponseEntity<Boolean>(x, HttpStatus.BAD_REQUEST);
     }
+    @PostMapping
+    public ResponseEntity<Long> oneTimePayment(@RequestBody CardDTO card) {
+        boolean x = false;
+        if(!card.getCardNumber().startsWith("4")) {
+            x = masterCardService.oneTimePayment(card);
+        } else {
+            x = visaCardService.oneTimePayment(card);
+        }
+        return x  ? new ResponseEntity<Long>(card.getId(), HttpStatus.ACCEPTED) : new ResponseEntity<Long>( HttpStatus.BAD_REQUEST);
+    }
 }
