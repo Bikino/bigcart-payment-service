@@ -47,7 +47,7 @@ public class CardController {
         }
         return x  ? new ResponseEntity<Boolean>(x, HttpStatus.ACCEPTED) : new ResponseEntity<Boolean>(x, HttpStatus.BAD_REQUEST);
     }
-    @PostMapping
+    @PostMapping("/oneTimePayment")
     public ResponseEntity<Long> oneTimePayment(@RequestBody CardDTO card) {
         boolean x = false;
         if(!card.getCardNumber().startsWith("4")) {
